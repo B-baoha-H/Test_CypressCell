@@ -121,6 +121,8 @@ describe('Test chức năng Thanh toán Chuyển khoản ngân hàng qua mã QR'
      // Chuyển sang bước tiếp theo
      cy.get('.button__go-next').click(); // Nhấn nút "Tiếp tục"
   });
+
+  
   //Kiểm tra thanh toán Chuyển khoản ngân hàng qua mã QR
   it('PayQR_02 - Kiểm tra thanh toán Chuyển khoản ngân hàng qua mã QR khi hủy thanh toán ', () => {
     

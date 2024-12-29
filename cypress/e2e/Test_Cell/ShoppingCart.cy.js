@@ -11,7 +11,9 @@ describe('Kiểm tra chức năng chỉnh sửa số lượng sản phẩm trong
     cy.contains('button', 'Đăng nhập').click()
     cy.contains('Ngọc').should('be.visible')
   })
-  it('Tăng số lượng sản phẩm', () => {  
+
+
+  it('Cart_05 - Tăng số lượng sản phẩm', () => {  
     //Thêm sản phẩm vào giỏ hàng
     cy.get('input[placeholder="Bạn cần tìm gì?"]').type('oppo{enter}')
     cy.wait(2000)
@@ -51,7 +53,8 @@ describe('Kiểm tra chức năng chỉnh sửa số lượng sản phẩm trong
       })
   })
 
-  it('Giảm số lượng sản phẩm', () => {
+
+  it('Cart_06 - Giảm số lượng sản phẩm', () => {
     // Truy cập vào giỏ hàng
     cy.get('.header-item.about-cart.button__link-to-cart').click()
     // Lấy số lượng ban đầu
@@ -75,7 +78,9 @@ describe('Kiểm tra chức năng chỉnh sửa số lượng sản phẩm trong
           .should('have.value', (currentQuantity - 1).toString())
       })
   })
-  it('Thêm nhiều sản phẩm vào giỏ hàng' , () => {
+
+
+  it('Cart_07 - Thêm nhiều sản phẩm vào giỏ hàng' , () => {
     //Thêm sản phẩm đầu tiên
     cy.get('input[placeholder="Bạn cần tìm gì?"]').type('iphone 13{enter}')
     cy.get('.product-list-filter.is-flex.is-flex-wrap-wrap .product-item')
@@ -104,7 +109,9 @@ describe('Kiểm tra chức năng chỉnh sửa số lượng sản phẩm trong
     cy.get('.header-item.about-cart.button__link-to-cart').click()
 
   })  
-  it('Xóa một sản phẩm khỏi giỏ hàng', () => {
+
+
+  it('Cart_08 - Xóa một sản phẩm khỏi giỏ hàng', () => {
     // Truy cập vào giỏ hàng
     cy.get('.header-item.about-cart.button__link-to-cart').click()
 
@@ -116,7 +123,9 @@ describe('Kiểm tra chức năng chỉnh sửa số lượng sản phẩm trong
         cy.get('.block__product-item__outer').should('not.exist')
       })
   })
-  it('Xoá tất cả sản phẩm khỏi giỏ hàng', () => {
+
+
+  it('Cart_09 - Xoá tất cả sản phẩm khỏi giỏ hàng', () => {
     // Truy cập vào giỏ hàng
     cy.get('.header-item.about-cart.button__link-to-cart').click()
 
@@ -125,7 +134,9 @@ describe('Kiểm tra chức năng chỉnh sửa số lượng sản phẩm trong
     cy.contains('Xóa sản phẩm đã chọn').click({ force: true })
     cy.contains('Giỏ hàng của bạn đang trống').should('be.visible')
   })
-  it('Tăng số lượng sản phẩm vượt quá số lượng tồn kho', () => {
+
+
+  it('Cart_10 - Tăng số lượng sản phẩm vượt quá số lượng tồn kho', () => {
 
     //Thêm sản phẩm vào giỏ hàng
     cy.get('input[placeholder="Bạn cần tìm gì?"]').type('oppo{enter}')
@@ -172,8 +183,9 @@ describe('Kiểm tra chức năng chỉnh sửa số lượng sản phẩm trong
     };  
     addProduct(); // Bắt đầu lặp
   }); 
+  
 
-  it('Giảm số lượng sản phẩm xuống tối thiểu', () => {
+  it('Cart_11 - Giảm số lượng sản phẩm xuống tối thiểu', () => {
     // Truy cập vào giỏ hàng
     cy.get('.header-item.about-cart.button__link-to-cart').click()
 

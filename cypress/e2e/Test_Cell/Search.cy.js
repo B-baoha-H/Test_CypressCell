@@ -1,46 +1,51 @@
 /// <reference types ="cypress"/>
 
 describe('Kiểm tra chức năng tìm kiếm sản phẩm', () => {
-    it('Tìm kiếm với từ khóa hợp lệ', () => {
+    it('Search_06 - Tìm kiếm với từ khóa hợp lệ', () => {
       cy.visit('https://cellphones.com.vn/')
       cy.get('input[placeholder="Bạn cần tìm gì?"]').type('iphone 14{enter}')
       cy.contains('iPhone 14').should('be.visible')
     })
 
-    it('Tìm kiếm với từ khóa không hợp lệ', () => {
+
+    it('Search_07 - Tìm kiếm với từ khóa không hợp lệ', () => {
       cy.visit('https://cellphones.com.vn/')
       cy.get('input[placeholder="Bạn cần tìm gì?"]').type('abcxyz1122{enter}')
       cy.contains('Không có kết quả bạn cần tìm').should('be.visible')
     })
 
-    it('Tìm kiếm với chuỗi rỗng', () => {    
+    
+    it('Search_08 - Tìm kiếm với chuỗi rỗng', () => {    
       cy.visit('https://cellphones.com.vn/')
       cy.get('input[placeholder="Bạn cần tìm gì?"]').type('{enter}')
       cy.contains('Không có kết quả bạn cần tìm').should('be.visible')
     })
 
-    it('Tìm kiếm với từ khóa chỉ toàn khoản trắng', () => {    
+
+    it('Search_09 - Tìm kiếm với từ khóa chỉ toàn khoản trắng', () => {    
       cy.visit('https://cellphones.com.vn/')
       cy.get('input[placeholder="Bạn cần tìm gì?"]').type('     {enter}')
       cy.contains('Không có kết quả bạn cần tìm').should('be.visible')
     })
 
-    it('Tìm kiếm với ký tự đặc biệt', () => {
+
+    it('Search_10 - Tìm kiếm với ký tự đặc biệt', () => {
       cy.visit('https://cellphones.com.vn/')
       cy.get('input[placeholder="Bạn cần tìm gì?"]').type('@!#$%^&*{enter}')
       cy.contains('Không có kết quả bạn cần tìm').should('be.visible')
     })
 
-    it('Kiểm tra chức năng tìm kiếm tự động', () => {        
+    
+    it('Search_11 - Kiểm tra chức năng gợi ý tự động', () => {        
       cy.visit('https://cellphones.com.vn/')
       cy.get('input[placeholder="Bạn cần tìm gì?"]').type('iph')
       cy.get('#search_autocomplete').should('exist').should('not.have.class', 'hidden')
     })
 
-    it('Kiểm tra chức năng phân trang', () => {        
+
+    it('Search_12 - Kiểm tra chức năng phân trang', () => {        
       cy.visit('https://cellphones.com.vn/')
       cy.get('input[placeholder="Bạn cần tìm gì?"]').type('iphone 14{enter}')
-  
       // Kiểm tra có ít nhất 1 sản phẩm được hiển thị
       cy.get('.product-list-filter.is-flex.is-flex-wrap-wrap', { timeout: 10000 })
         .should('have.length.greaterThan', 0)
@@ -55,7 +60,6 @@ describe('Kiểm tra chức năng tìm kiếm sản phẩm', () => {
           .then((newItems) => {
         cy.log(`Final new items count after multiple clicks: ${newItems.length}`)
         })  
-
     })
 })
 

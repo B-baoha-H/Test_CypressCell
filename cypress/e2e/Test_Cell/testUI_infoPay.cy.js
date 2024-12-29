@@ -14,6 +14,8 @@ describe('Test Giao diện payment-info', () => {
         });
         cy.visit('https://cellphones.com.vn/cart'); // Điều hướng đến giỏ hàng
     });
+
+    
     // // PayInfo_01: Kiểm tra thông tin sản phẩm
     it('PayInfo_01 - Kiểm tra thông tin sản phẩm hiển thị đúng', () => {         
         cy.get(':nth-child(2) > .block__product-item > .checkbox-product > .select-product-action > .custom-control-label > .product-img').click(); // Chọn sản phẩm muốn mua
@@ -28,6 +30,8 @@ describe('Test Giao diện payment-info', () => {
         cy.wait(1000);
         cy.screenshot('PayInfo_01',{ capture: 'runner' });  // Lưu ảnh chụp với tên "PayInfo_01"
     });
+
+
     // // PayInfo_02: Kiểm tra hiển thị hình ảnh sản phẩm
     it('PayInfo_02 - Kiểm tra hiển thị hình ảnh sản phẩm', () => {
         // Chọn sản phẩm muốn mua
@@ -41,6 +45,8 @@ describe('Test Giao diện payment-info', () => {
         cy.wait(1000);
         cy.screenshot('PayInfo_02',{ capture: 'runner' });  // Lưu ảnh chụp với tên "PayInfo_02"
     }); 
+
+
     // // PayInfo_03: Kiểm tra hiển thị giá sản phẩm
     it('PayInfo_03 - Kiểm tra hiển thị giá sản phẩm', () => {
         cy.get(':nth-child(2) > .block__product-item > .checkbox-product > .select-product-action > .custom-control-label > .product-img').click(); // Chọn sản phẩm muốn mua
@@ -59,6 +65,8 @@ describe('Test Giao diện payment-info', () => {
         cy.wait(1000);
         cy.screenshot('PayInfo_03',{ capture: 'runner' });  // Lưu ảnh chụp với tên "PayInfo_03"
     });
+
+
     //
     it('PayInfo_04 - Kiểm tra trường email có yêu cầu nhập đúng định dạng', () => {
         // Chọn sản phẩm muốn mua
@@ -79,6 +87,8 @@ describe('Test Giao diện payment-info', () => {
         cy.wait(1000);
         cy.screenshot('PayInfo_04',{ capture: 'runner' });  // Lưu ảnh chụp với tên "PayInfo_04"
     });
+
+
     // // PayInfo_05: Kiểm tra tùy chọn "Nhận tại cửa hàng" được chọn mặc định
     it('PayInfo_05 - Kiểm tra tùy chọn "Nhận tại cửa hàng" được chọn mặc định', () => {
         // Chọn sản phẩm muốn mua
@@ -121,6 +131,8 @@ describe('Test Giao diện payment-info', () => {
         cy.wait(1000);
         cy.screenshot('PayInfo_05',{ capture: 'runner' });  // Lưu ảnh chụp với tên "PayInfo_05"
     });
+
+
     // PayInfo_06: Kiểm tra dropdown tỉnh/thành phố hoạt động
     it('PayInfo_06 - Kiểm tra dropdown tỉnh/thành phố hoạt động', () => {
         // Chọn sản phẩm muốn mua
@@ -134,6 +146,8 @@ describe('Test Giao diện payment-info', () => {
         cy.wait(1000);
         cy.screenshot('PayInfo_06',{ capture: 'runner' });  // Lưu ảnh chụp với tên "PayInfo_06"          
     });
+
+
     // PayInfo_07: Kiểm tra dropdown quận/huyện thay đổi theo tỉnh/thành phố đã chọn
     it('PayInfo_07 - Kiểm tra dropdown quận/huyện thay đổi theo tỉnh/thành phố', () => {
         // Chọn sản phẩm muốn mua
@@ -147,6 +161,7 @@ describe('Test Giao diện payment-info', () => {
         cy.wait(1000);
         cy.screenshot('PayInfo_07',{ capture: 'runner' });  // Lưu ảnh chụp với tên "PayInfo_07"
     });
+
 
     // PayInfo_08: Kiểm tra danh sách cửa hàng hiển thị đúng theo quận/huyện đã chọn
     it('PayInfo_08 - Kiểm tra danh sách cửa hàng theo quận/huyện', () => {
@@ -174,6 +189,7 @@ describe('Test Giao diện payment-info', () => {
         cy.wait(1000);
         cy.screenshot('PayInfo_08',{ capture: 'runner' });  // Lưu ảnh chụp với tên "PayInfo_08"
     });
+
 
     // PayInfo_09: Kiểm tra hiển thị các trường thông tin giao hàng
     it('PayInfo_09 - Kiểm tra hiển thị thông tin giao hàng đầy đủ', () => {
@@ -210,6 +226,7 @@ describe('Test Giao diện payment-info', () => {
         cy.screenshot('PayInfo_09',{ capture: 'runner' });  // Lưu ảnh chụp với tên "PayInfo_09"     
     });
 
+
     // PayInfo_10: Kiểm tra trường "Tên người nhận" bắt buộc nhập
     it('PayInfo_10 - Kiểm tra trường "Tên người nhận" bắt buộc nhập', () => {
         cy.get(':nth-child(2) > .block__product-item > .checkbox-product > .select-product-action > .custom-control-label > .product-img').click();         
@@ -228,6 +245,7 @@ describe('Test Giao diện payment-info', () => {
      
     // });//cy.get('.error-message').should('contain.text', 'Tên người nhận không được để trống');
     });
+
 
     // PayInfo_11: Kiểm tra định dạng "SĐT người nhận"
     it('PayInfo_11 - Kiểm tra định dạng và để trống "SĐT người nhận"', () => {
@@ -302,6 +320,7 @@ describe('Test Giao diện payment-info', () => {
         
     });
     
+
     //PayInfo_13: Kiểm tra tùy chọn địa chỉ giao hàng có trong sổ địa chỉ mặc định 
     it('PayInfo_13 - Kiểm tra tùy chọn địa chỉ giao hàng có trong sổ địa chỉ ', () => {
         // Chọn sản phẩm
@@ -330,6 +349,8 @@ describe('Test Giao diện payment-info', () => {
         cy.wait(1000);
         cy.screenshot('PayInfo_13',{ capture: 'runner' });  // Lưu ảnh chụp với tên "PayInfo_13"
     });
+
+
     // PayInfo_14: Kiểm tra ghi chú giao hàng
     it('PayInfo_14 - Kiểm tra ghi chú giao hàng', () => {
         // Chọn sản phẩm
