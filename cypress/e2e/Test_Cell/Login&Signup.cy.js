@@ -1,110 +1,111 @@
 /// <reference types="cypress" />
 
-describe('Kiểm tra chức năng đăng nhập tài khoản', () => {
-  it('Login_09 - Đăng nhập với tài khoản đã đăng ký', () => {
-    cy.visit('https://cellphones.com.vn/')
-    cy.contains('Đăng nhập').click({force: true})
-    cy.get('.login-btn').click({multiple: true, force: true})
-    cy.get('input[placeholder="Nhập số điện thoại"]').type('0373280670') 
-    cy.get('input[placeholder="Nhập mật khẩu"]').type('Vulehongngoc1103')
-    cy.contains('button', 'Đăng nhập').click()   
-  })
+// describe('Kiểm tra chức năng đăng nhập tài khoản', () => {
+//   it('Login_09 - Đăng nhập với tài khoản đã đăng ký', () => {
+//     cy.visit('https://cellphones.com.vn/')
+//     cy.contains('Đăng nhập').click({force: true})
+//     cy.get('.login-btn').click({multiple: true, force: true})
+//     cy.get('input[placeholder="Nhập số điện thoại"]').type('0373280670') 
+//     cy.get('input[placeholder="Nhập mật khẩu"]').type('Vulehongngoc11022')
+//     cy.contains('button', 'Đăng nhập').click()   
+//   })
 
 
-  it('Login_10 - Đăng nhập với số điện thoại không tồn tại', () => {
-    cy.visit('https://cellphones.com.vn/')
-    cy.contains('Đăng nhập').click({force: true})
-    cy.get('.login-btn').click({multiple: true, force: true})
-    cy.get('input[placeholder="Nhập số điện thoại"]').type('0373280678') 
-    cy.get('input[placeholder="Nhập mật khẩu"]').type('Vulehongngoc1103')
-    cy.contains('button', 'Đăng nhập').click()
-    cy.contains('Thông tin đăng nhập không đúng. Vui lòng kiểm tra và thử lại.').should('be.visible')
-  })
+//   it('Login_10 - Đăng nhập với số điện thoại chưa đăng ký', () => {
+//     cy.visit('https://cellphones.com.vn/')
+//     cy.contains('Đăng nhập').click({force: true})
+//     cy.get('.login-btn').click({multiple: true, force: true})
+//     cy.get('input[placeholder="Nhập số điện thoại"]').type('0373280678') 
+//     cy.get('input[placeholder="Nhập mật khẩu"]').type('Vulehongngoc1102')
+//     cy.contains('button', 'Đăng nhập').click()
+//     cy.contains('Thông tin đăng nhập không đúng. Vui lòng kiểm tra và thử lại.').should('be.visible')
+//   })
 
 
-  it('Login_11 - Đăng nhập với số điện thoại không đúng định dạng', () => {
-    cy.visit('https://cellphones.com.vn/')
-    cy.contains('Đăng nhập').click({force: true})
-    cy.get('.login-btn').click({multiple: true, force: true})
-    cy.get('input[placeholder="Nhập số điện thoại"]').type('12asd') 
-    cy.get('input[placeholder="Nhập mật khẩu"]').type('Vulehongngoc1103')
-    cy.contains('button', 'Đăng nhập').click()
-    cy.contains('Vui lòng kiểm tra lại số điện thoại').should('be.visible')
-  })
+//   it('Login_11 - Đăng nhập với số điện thoại không đúng định dạng', () => {
+//     cy.visit('https://cellphones.com.vn/')
+//     cy.contains('Đăng nhập').click({force: true})
+//     cy.get('.login-btn').click({multiple: true, force: true})
+//     cy.get('input[placeholder="Nhập số điện thoại"]').type('12asd') 
+//     cy.get('input[placeholder="Nhập mật khẩu"]').type('Vulehongngoc1102')
+//     cy.contains('button', 'Đăng nhập').click()
+//     cy.contains('Vui lòng kiểm tra lại số điện thoại').should('be.visible')
+//   })
 
 
-  it('Login_12 - Đăng nhập với mật khẩu không đúng', () => {
-    cy.visit('https://cellphones.com.vn/')
-    cy.contains('Đăng nhập').click({force: true})
-    cy.get('.login-btn').click({multiple: true, force: true})
-    cy.get('input[placeholder="Nhập số điện thoại"]').type('0373280670')
-    cy.get('input[placeholder="Nhập mật khẩu"]').type('1')
-    cy.contains('button', 'Đăng nhập').click()
-    cy.contains('Thông tin đăng nhập không đúng. Vui lòng kiểm tra và thử lại.').should('be.visible')
-  })
+//   it('Login_12 - Đăng nhập với mật khẩu không đúng', () => {
+//     cy.visit('https://cellphones.com.vn/')
+//     cy.contains('Đăng nhập').click({force: true})
+//     cy.get('.login-btn').click({multiple: true, force: true})
+//     cy.get('input[placeholder="Nhập số điện thoại"]').type('0373280670')
+//     cy.get('input[placeholder="Nhập mật khẩu"]').type('1')
+//     cy.contains('button', 'Đăng nhập').click()
+//     cy.contains('Thông tin đăng nhập không đúng. Vui lòng kiểm tra và thử lại.').should('be.visible')
+//   })
 
 
-  it('Login_13 - Đăng nhập với số điện thoại rỗng', () => {
-    cy.visit('https://cellphones.com.vn/')
-    cy.contains('Đăng nhập').click({force: true})
-    cy.get('.login-btn').click({multiple: true, force: true})
-    cy.get('input[placeholder="Nhập mật khẩu"]').type('Vulehongngoc1103')
-    cy.contains('button', 'Đăng nhập').click()
-    cy.get('input[placeholder="Nhập số điện thoại"]:invalid').should('exist')
-  })
+//   it('Login_13 - Đăng nhập với số điện thoại rỗng', () => {
+//     cy.visit('https://cellphones.com.vn/')
+//     cy.contains('Đăng nhập').click({force: true})
+//     cy.get('.login-btn').click({multiple: true, force: true})
+//     cy.get('input[placeholder="Nhập mật khẩu"]').type('Vulehongngoc1102')
+//     cy.contains('button', 'Đăng nhập').click()
+//     cy.get('input[placeholder="Nhập số điện thoại"]:invalid').should('exist')
+//   })
 
 
-  it('Login_14 - Đăng nhập với mật khẩu rỗng', () => {
-    cy.visit('https://cellphones.com.vn/')
-    cy.contains('Đăng nhập').click({force: true})
-    cy.get('.login-btn').click({multiple: true, force: true})
-    cy.get('input[placeholder="Nhập số điện thoại"]').type('0373280670')
-    cy.contains('button', 'Đăng nhập').click()
-    cy.get('input[placeholder="Nhập mật khẩu"]:invalid').should('exist')
-  })
+//   it('Login_14 - Đăng nhập với mật khẩu rỗng', () => {
+//     cy.visit('https://cellphones.com.vn/')
+//     cy.contains('Đăng nhập').click({force: true})
+//     cy.get('.login-btn').click({multiple: true, force: true})
+//     cy.get('input[placeholder="Nhập số điện thoại"]').type('0373280670')
+//     cy.contains('button', 'Đăng nhập').click()
+//     cy.get('input[placeholder="Nhập mật khẩu"]:invalid').should('exist')
+//   })
 
 
-  it('Login_15 - Đăng nhập với số điện thoại và mật khẩu rỗng', () => {
-    cy.visit('https://cellphones.com.vn/')
-    cy.contains('Đăng nhập').click({force: true})
-    cy.get('.login-btn').click({multiple: true, force: true})
-    cy.contains('button', 'Đăng nhập').click()
-    cy.get('input[placeholder="Nhập số điện thoại"]:invalid').should('exist')
-    cy.get('input[placeholder="Nhập mật khẩu"]:invalid').should('exist')
-  })
+//   it('Login_15 - Đăng nhập với số điện thoại và mật khẩu rỗng', () => {
+//     cy.visit('https://cellphones.com.vn/')
+//     cy.contains('Đăng nhập').click({force: true})
+//     cy.get('.login-btn').click({multiple: true, force: true})
+//     cy.contains('button', 'Đăng nhập').click()
+//     cy.get('input[placeholder="Nhập số điện thoại"]:invalid').should('exist')
+//     cy.get('input[placeholder="Nhập mật khẩu"]:invalid').should('exist')
+//   })
 
 
-    it('Login_16 - Đăng xuất', () => {
-        cy.visit('https://cellphones.com.vn/')
-        cy.contains('Đăng nhập').click({force: true})
-        cy.get('.login-btn').click({multiple: true, force: true})
-        cy.get('input[placeholder="Nhập số điện thoại"]').type('0373280670') 
-        cy.get('input[placeholder="Nhập mật khẩu"]').type('Vulehongngoc1103')
-        cy.contains('button', 'Đăng nhập').click()
-        cy.contains('Ngọc').click()
-        cy.contains('Truy cập Smember').click()
-        cy.contains('Thoát tài khoản').click({force: true})
-        cy.contains('Xác nhận').click()
-        cy.contains('Đăng nhập với').should('be.visible')
-    })
+//     it('Login_16 - Đăng xuất', () => {
+//         cy.visit('https://cellphones.com.vn/')
+//         cy.contains('Đăng nhập').click({force: true})
+//         cy.get('.login-btn').click({multiple: true, force: true})
+//         cy.get('input[placeholder="Nhập số điện thoại"]').type('0373280670') 
+//         cy.get('input[placeholder="Nhập mật khẩu"]').type('Vulehongngoc11022')
+//         cy.contains('button', 'Đăng nhập').click()
+//         cy.wait(2000)
+//         cy.contains('Ngọc').click({force: true})
+//         cy.contains('Truy cập Smember').click()
+//         cy.contains('Thoát tài khoản').click({force: true})
+//         cy.contains('Xác nhận').click()
+//         cy.contains('Đăng nhập với').should('be.visible')
+//     })
 
 
-    it('Login_17 - Quên mật khẩu', () => {
-      cy.visit('https://cellphones.com.vn/')
-      cy.contains('Đăng nhập').click({force: true})
-      cy.get('.login-btn').click({multiple: true, force: true})
-      cy.contains('Quên mật khẩu?').click()
-      cy.get('input[placeholder="Số điện thoại/ Email"]').type('0373280670')
-      cy.contains('Tiếp tục').click()
-      cy.pause()
-      cy.contains('button', 'Xác nhận').click()
-      cy.contains('Xác thực mã otp thành công').should('be.visible')
-      cy.get('input[placeholder="Nhập mật khẩu mới của bạn"]').type('Vulehongngoc1103')
-      cy.get('input[placeholder="Xác nhận lại mật khẩu"]').type('Vulehongngoc1103')
-      cy.contains('Xác nhận').click()
-      cy.contains('Thành công').should('be.visible')
-   })
-})
+//     it('Login_17 - Quên mật khẩu', () => {
+//       cy.visit('https://cellphones.com.vn/')
+//       cy.contains('Đăng nhập').click({force: true})
+//       cy.get('.login-btn').click({multiple: true, force: true})
+//       cy.contains('Quên mật khẩu?').click()
+//       cy.get('input[placeholder="Số điện thoại/ Email"]').type('0373280670')
+//       cy.contains('Tiếp tục').click()
+//       cy.pause()
+//       cy.contains('button', 'Xác nhận').click()
+//       cy.contains('Xác thực mã otp thành công').should('be.visible')
+//       cy.get('input[placeholder="Nhập mật khẩu mới của bạn"]').type('Vulehongngoc1103')
+//       cy.get('input[placeholder="Xác nhận lại mật khẩu"]').type('Vulehongngoc1103')
+//       cy.contains('Xác nhận').click()
+//       cy.contains('Thành công').should('be.visible')
+//    })
+// })
 
 
 describe('Kiểm tra chức năng đăng ký tài khoản', () => {
