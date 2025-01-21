@@ -4,29 +4,49 @@ describe('Test Giao diện payment-info', () => {
         // Sử dụng cy.session() để lưu trạng thái đăng nhập
         cy.session('loginSession', () => {
             cy.visit('https://cellphones.com.vn/');
-            cy.contains('Đăng nhập').click();
-            cy.get('.login-btn').click({ multiple: true, force: true });
+            cy.get('input[placeholder="Bạn cần tìm gì?"]').type('oppo{enter}')
+            cy.wait(2000)
+            cy.get('.product-list-filter.is-flex.is-flex-wrap-wrap .product-item')
+            .first()
+            .find("a") // tìm đến thẻ <a> 
+            .click({ force: true })
+            cy.get('.order-button').click({ force: true });
+            cy.get('.group-login-btn > .login-btn').click();
             cy.get('input[placeholder="Nhập số điện thoại"]').type('0355052071');
             cy.get('input[placeholder="Nhập mật khẩu"]').type('Baoha2312');
             cy.contains('button', 'Đăng nhập').click();
-            cy.wait(2000);
-            cy.get('.about-cart').click(); // Vào trang giỏ hàng
+            cy.get('.order-button').click({ force: true });
+            cy.wait(2000);            
         });
         cy.visit('https://cellphones.com.vn/cart'); // Điều hướng đến giỏ hàng
     });
     // // PayInfo_01: Kiểm tra thông tin sản phẩm
     it('PayInfo_01 - Kiểm tra thông tin sản phẩm hiển thị đúng', () => {         
-        cy.get(':nth-child(2) > .block__product-item > .checkbox-product > .select-product-action > .custom-control-label > .product-img').click(); // Chọn sản phẩm muốn mua
-        cy.get(':nth-child(2) > .block__product-item > .product-info > .align-items-start > .product-name')// Lấy giá trị và lưu vào alias
+        // Chọn sản phẩm muốn mua
+        cy.get(':nth-child(2) > .block__product-item > .checkbox-product > .select-product-action > .custom-control-label > .product-img').click({force: true}); 
+        
+        // Lấy giá trị tên sản phẩm và lưu vào alias
+        cy.get(':nth-child(2) > .block__product-item > .product-info > .align-items-start > .product-name')
             .invoke('text') // Lấy giá trị text
+            .then((text) => text.trim()) // Loại bỏ khoảng trắng thừa
             .as('productName'); // Lưu với alias tên 'productName'    
-        cy.get('.btn-action').click();
-        // So sánh giá trị đã lưu
+
+        // Click vào nút hành động để tiếp tục
+        cy.get('.btn-action').click({force: true});
+
+        // So sánh giá trị tên sản phẩm đã lưu với giá trị trên giao diện
         cy.get('@productName').then((productName) => {
-            cy.get('.item__name').should('have.text', productName); // So sánh với giá trị trên giao diện
+            cy.get('.item__name')
+                .invoke('text')
+                .then((text) => text.trim()) // Loại bỏ khoảng trắng thừa
+                .should('eq', productName); 
         });
+
+        // Chờ một giây để đảm bảo giao diện đã ổn định trước khi chụp màn hình
         cy.wait(1000);
-        cy.screenshot('PayInfo_01',{ capture: 'runner' });  // Lưu ảnh chụp với tên "PayInfo_01"
+
+        // Chụp màn hình kết quả với tên "PayInfo_01"
+        cy.screenshot('PayInfo_01', { capture: 'runner' });  
     });
     // // PayInfo_02: Kiểm tra hiển thị hình ảnh sản phẩm
     it('PayInfo_02 - Kiểm tra hiển thị hình ảnh sản phẩm', () => {
