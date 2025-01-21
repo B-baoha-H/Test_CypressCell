@@ -4,11 +4,18 @@ describe('Test Giao diện Thanh toán', () => {
     beforeEach(() => {
         cy.session('loginSession', () => {
             cy.visit('https://cellphones.com.vn/');
-            cy.contains('Đăng nhập').click();
-            cy.get('.login-btn').click({ multiple: true, force: true });
-            cy.get('input[placeholder="Nhập số điện thoại"]').type('0356357428');
+            cy.get('input[placeholder="Bạn cần tìm gì?"]').type('oppo{enter}')
+            cy.wait(2000)
+            cy.get('.product-list-filter.is-flex.is-flex-wrap-wrap .product-item')
+            .first()
+            .find("a") // tìm đến thẻ <a> 
+            .click({ force: true })
+            cy.get('.order-button').click({ force: true });
+            cy.get('.group-login-btn > .login-btn').click();
+            cy.get('input[placeholder="Nhập số điện thoại"]').type('0355052071');
             cy.get('input[placeholder="Nhập mật khẩu"]').type('Baoha2312');
             cy.contains('button', 'Đăng nhập').click();
+            //cy.get('.order-button').click({ force: true });
             cy.wait(2000);
         });
         // Wait for the login to complete before navigating
